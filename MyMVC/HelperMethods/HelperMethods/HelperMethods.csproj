@@ -133,7 +133,6 @@
     <Compile Include="Helpers\ListControlExtensions.cs" />
     <Compile Include="Helpers\ListControlUtil.cs" />
     <Compile Include="Models\CodeDescription.cs" />
-    <Compile Include="Models\CodeManager.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
