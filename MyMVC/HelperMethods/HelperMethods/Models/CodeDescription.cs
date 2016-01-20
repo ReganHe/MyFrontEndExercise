@@ -2,10 +2,10 @@
 {
     public class CodeDescription
     {
-        public string Code { get; set; }
+        public int Code { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-        public CodeDescription(string code, string description, string category)
+        public CodeDescription(int code, string description, string category)
         {
             this.Code = code;
             this.Description = description;

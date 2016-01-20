@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -26,15 +28,15 @@ namespace HelperMethods.Helpers
                     var isChecked = false;
                     if (isCheckBox)
                     {
-                        var currentValues = stateValue as IEnumerable<string>;
+                        var currentValues = stateValue as IEnumerable<int>;
                         isChecked = (null != currentValues && currentValues.Contains(code.Code));
                     }
                     else
                     {
-                        var currentValue = stateValue as string;
-                        isChecked = (null != currentValue && code.Code == currentValue);
+                        var currentValue = (int)stateValue;
+                        isChecked = (code.Code == currentValue);
                     }
-                    
+
                     td.InnerHtml = GenerateRadioHtml(name, id, code.Description, code.Code, isChecked, type);
                     tr.InnerHtml += td.ToString();
                 }
@@ -52,13 +54,13 @@ namespace HelperMethods.Helpers
                     var isChecked = false;
                     if (isCheckBox)
                     {
-                        var currentValues = stateValue as IEnumerable<string>;
+                        var currentValues = stateValue as IEnumerable<int>;
                         isChecked = (null != currentValues && currentValues.Contains(code.Code));
                     }
                     else
                     {
-                        var currentValue = stateValue as string;
-                        isChecked = (null != currentValue && code.Code == currentValue);
+                        var currentValue = (int)stateValue;
+                        isChecked = (code.Code == currentValue);
                     }
 
                     td.InnerHtml = GenerateRadioHtml(name, id, code.Description, code.Code, isChecked, type);
@@ -70,7 +72,7 @@ namespace HelperMethods.Helpers
             return new MvcHtmlString(table.ToString());
         }
 
-        private static string GenerateRadioHtml(string name, string id, string labelText, string value, bool isChecked, string type)
+        private static string GenerateRadioHtml(string name, string id, string labelText, int value, bool isChecked, string type)
         {
             var sb = new StringBuilder();
             var label = new TagBuilder("label");
@@ -80,7 +82,7 @@ namespace HelperMethods.Helpers
             input.GenerateId(id);
             input.MergeAttribute("name", name);
             input.MergeAttribute("type", type);
-            input.MergeAttribute("value", value);
+            input.MergeAttribute("value", value.ToString(CultureInfo.InvariantCulture));
             if (isChecked)
             {
                 input.MergeAttribute("checked", "checked");

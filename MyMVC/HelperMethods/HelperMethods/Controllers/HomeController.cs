@@ -7,7 +7,7 @@ namespace HelperMethods.Controllers
     {
         public ActionResult Index()
         {
-            return View(new Person { Name = "Foo", Gender = "M", MaritalStatus = "S", Country = new[] { "CN", "US" } });
+            return View(new Person { Name = "Foo", Gender = 1, MaritalStatus = 1, Country = new[] { 1, 2 } });
         }
 
         [HttpPost]

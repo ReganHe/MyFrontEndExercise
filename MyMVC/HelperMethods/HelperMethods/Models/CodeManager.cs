@@ -7,14 +7,14 @@ namespace HelperMethods.Models
     {
         private static readonly CodeDescription[] Codes =
         {
-            new CodeDescription("M","Male","Gender"),
-            new CodeDescription("F","Female","Gender"),
-            new CodeDescription("S","Single","MaritalStatus"),
-            new CodeDescription("M","Married","MaritalStatus"),
-            new CodeDescription("CN","China","Country"),
-            new CodeDescription("US","Unite States","Country"),
-            new CodeDescription("UK","Britain","Country"),
-            new CodeDescription("SG","Singapore","Country")
+            new CodeDescription(1,"Male","Gender"),
+            new CodeDescription(2,"Female","Gender"),
+            new CodeDescription(1,"Single","MaritalStatus"),
+            new CodeDescription(2,"Married","MaritalStatus"),
+            new CodeDescription(1,"China","Country"),
+            new CodeDescription(2,"Unite States","Country"),
+            new CodeDescription(3,"Britain","Country"),
+            new CodeDescription(4,"Singapore","Country")
         };
 
         public static Collection<CodeDescription> GetCodes(string category)

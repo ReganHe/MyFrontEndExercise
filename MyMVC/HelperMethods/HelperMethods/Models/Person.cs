@@ -6,12 +6,12 @@ namespace HelperMethods.Models
     {
         public string Name { get; set; }
 
-        public string Gender { get; set; }
+        public int Gender { get; set; }
 
         [Display(Name = "Marital Status")]
-        public string MaritalStatus { get; set; }
+        public int MaritalStatus { get; set; }
 
-        public string[] Country { get; set; }
+        public int[] Country { get; set; }
 
     }
 }
