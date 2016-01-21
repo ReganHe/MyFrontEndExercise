@@ -17,7 +17,7 @@ namespace SportStore.UnitTests
         [TestMethod()]
         public void MenuTest_CanCreateCategories()
         {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            var mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[] {
             new Product{ ProductID=1,Name="P1", Category="Apples"},
             new Product{ ProductID=2,Name="P2", Category="Apples"},
@@ -37,7 +37,7 @@ namespace SportStore.UnitTests
         [TestMethod()]
         public void MenuTest_IndicatesSelectedCategory()
         {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            var mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[] {
                 new Product{ ProductID=1,Name="P1", Category="Apples"},
                 new Product{ ProductID=4,Name="P2", Category="Oranges"}
