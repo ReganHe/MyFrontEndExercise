@@ -9,12 +9,12 @@ namespace HelperMethods.Helpers
 {
     public static class ListControlExtensions
     {
-        public static MvcHtmlString RadioButtonList(this HtmlHelper htmlHelper, string name, IEnumerable<CodeDescription> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
+        public static MvcHtmlString RadioButtonList(this HtmlHelper htmlHelper, string name, Dictionary<int, string> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
         {
             return ListControlUtil.GenerateHtml(name, codes, repeatDirection, "radio", null);
         }
 
-        public static MvcHtmlString RadioButtonListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression,IEnumerable<CodeDescription> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
+        public static MvcHtmlString RadioButtonListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Dictionary<int, string> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
         {
             var metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             var name = ExpressionHelper.GetExpressionText(expression);
@@ -22,12 +22,12 @@ namespace HelperMethods.Helpers
             return ListControlUtil.GenerateHtml(fullHtmlFieldName, codes, repeatDirection, "radio", metadata.Model);
         }
 
-        public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, IEnumerable<CodeDescription> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
+        public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, Dictionary<int, string> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
         {
             return ListControlUtil.GenerateHtml(name, codes, repeatDirection, "checkbox", null);
         }
 
-        public static MvcHtmlString CheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<CodeDescription> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
+        public static MvcHtmlString CheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Dictionary<int, string> codes, RepeatDirection repeatDirection = RepeatDirection.Horizontal)
         {
             var metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             var name = ExpressionHelper.GetExpressionText(expression);

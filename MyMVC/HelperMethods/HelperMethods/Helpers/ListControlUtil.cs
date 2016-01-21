@@ -12,7 +12,7 @@ namespace HelperMethods.Helpers
     public static class ListControlUtil
     {
 
-        public static MvcHtmlString GenerateHtml(string name, IEnumerable<CodeDescription> codes, RepeatDirection repeatDirection, string type, object stateValue)
+        public static MvcHtmlString GenerateHtml(string name, Dictionary<int, string> dictionary, RepeatDirection repeatDirection, string type, object stateValue)
         {
             var table = new TagBuilder("table");
             var i = 0;
@@ -20,7 +20,7 @@ namespace HelperMethods.Helpers
             if (repeatDirection == RepeatDirection.Horizontal)
             {
                 var tr = new TagBuilder("tr");
-                foreach (var code in codes)
+                foreach (var key in dictionary.Keys)
                 {
                     i++;
                     var id = string.Format("{0}_{1}", name, i);
@@ -29,15 +29,15 @@ namespace HelperMethods.Helpers
                     if (isCheckBox)
                     {
                         var currentValues = stateValue as IEnumerable<int>;
-                        isChecked = (null != currentValues && currentValues.Contains(code.Code));
+                        isChecked = (null != currentValues && currentValues.Contains(key));
                     }
                     else
                     {
                         var currentValue = (int)stateValue;
-                        isChecked = (code.Code == currentValue);
+                        isChecked = (key == currentValue);
                     }
 
-                    td.InnerHtml = GenerateRadioHtml(name, id, code.Description, code.Code, isChecked, type);
+                    td.InnerHtml = GenerateRadioHtml(name, id, dictionary[key], key, isChecked, type);
                     tr.InnerHtml += td.ToString();
                 }
 
@@ -45,7 +45,7 @@ namespace HelperMethods.Helpers
             }
             else
             {
-                foreach (var code in codes)
+                foreach (var key in dictionary.Keys)
                 {
                     var tr = new TagBuilder("tr");
                     i++;
@@ -55,15 +55,15 @@ namespace HelperMethods.Helpers
                     if (isCheckBox)
                     {
                         var currentValues = stateValue as IEnumerable<int>;
-                        isChecked = (null != currentValues && currentValues.Contains(code.Code));
+                        isChecked = (null != currentValues && currentValues.Contains(key));
                     }
                     else
                     {
                         var currentValue = (int)stateValue;
-                        isChecked = (code.Code == currentValue);
+                        isChecked = (key == currentValue);
                     }
 
-                    td.InnerHtml = GenerateRadioHtml(name, id, code.Description, code.Code, isChecked, type);
+                    td.InnerHtml = GenerateRadioHtml(name, id, dictionary[key], key, isChecked, type);
                     tr.InnerHtml = td.ToString();
                     table.InnerHtml += tr.ToString();
                 }

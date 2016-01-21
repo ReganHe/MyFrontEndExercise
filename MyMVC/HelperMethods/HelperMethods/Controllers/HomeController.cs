@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using HelperMethods.Models;
 
 namespace HelperMethods.Controllers
@@ -20,22 +21,22 @@ namespace HelperMethods.Controllers
 
         private void BindCollection()
         {
-            ViewData["GenderData"] = new[]
+            ViewData["GenderData"] = new Dictionary<int, string>
             {
-                new CodeDescription(1, "Male", "Gender"),
-                new CodeDescription(2, "Female", "Gender")
+                {1, "Male"},
+                {2, "Female"}
             };
-            ViewData["MaritalStatusData"] = new[]
+            ViewData["MaritalStatusData"] = new Dictionary<int, string>
             {
-                new CodeDescription(1, "Single", "MaritalStatus"),
-                new CodeDescription(2, "Married", "MaritalStatus")
+                {1, "Single"},
+                {2, "Married"}
             };
-            ViewData["CountryData"] = new[]
+            ViewData["CountryData"] = new Dictionary<int, string>
             {
-                new CodeDescription(1, "China", "Country"),
-                new CodeDescription(2, "Unite States", "Country"),
-                new CodeDescription(3, "Britain", "Country"),
-                new CodeDescription(4, "Singapore", "Country")
+                {1, "China"},
+                {2, "Unite States"},
+                {3, "Britain"},
+                {4, "Singapore"}
             };
         }
     }
