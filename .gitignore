@@ -16,3 +16,5 @@ MyExpress/myapp/node_modules/express/node_modules/
 MyBrowserify/node_modules/
 MyExpress/myapp/node_modules/
 MyWebPack/second/node_modules/
+.idea/
+MyExpress/HelloWorld/node_modules/
