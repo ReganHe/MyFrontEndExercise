@@ -1,0 +1,32 @@
+﻿@using System.Web.UI.WebControls
+@using HelperMethods.Helpers
+@using HelperMethods.Models
+@model Person
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    <table id="container">
+        <tr>
+            <td class="label">@Html.LabelFor(m => m.Name):</td>
+            <td>@Html.EditorFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td class="label">@Html.LabelFor(m => m.Gender):</td>
+            <td>@Html.RadioButtonListFor(m => m.Gender, (Dictionary<int,string>)ViewData["GenderData"])</td>
+        </tr>
+        <tr>
+            <td class="label">@Html.LabelFor(m => m.MaritalStatus):</td>
+            <td>@Html.RadioButtonListFor(m => m.MaritalStatus, (Dictionary<int, string>)ViewData["MaritalStatusData"])</td>
+        </tr>
+        <tr>
+            <td class="label">@Html.LabelFor(m => m.Country):</td>
+            <td>@Html.CheckBoxListFor(m => m.Country, (Dictionary<int, string>)ViewData["CountryData"], RepeatDirection.Vertical)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Save" /></td>
+        </tr>
+    </table>
+}
