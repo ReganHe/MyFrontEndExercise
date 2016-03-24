@@ -1,3 +1,4 @@
+.idea/
 MyMVC/SportsStoreMvc/Code/SportStore/SportStore.Domain/bin/
 MyMVC/SportsStoreMvc/Code/SportStore/SportStore.Domain/obj/
 MyMVC/SportsStoreMvc/Code/SportStore/SportStore.UnitTests/bin/
@@ -12,10 +13,10 @@ MyMVC/HelperMethods/HelperMethods.Tests/bin/
 MyMVC/HelperMethods/HelperMethods.Tests/obj/
 MyMVC/HelperMethods/HelperMethods/bin/
 MyMVC/HelperMethods/HelperMethods/obj/
-MyExpress/myapp/node_modules/express/node_modules/
 MyBrowserify/node_modules/
-MyExpress/myapp/node_modules/
-MyWebPack/second/node_modules/
-.idea/
-MyExpress/HelloWorld/node_modules/
 MyBrowserify/HelloWorld/node_modules/
+MyExpress/myapp/node_modules/
+MyExpress/HelloWorld/node_modules/
+MyJasmine/First/node_modules/
+MyWebPack/second/node_modules/
+
