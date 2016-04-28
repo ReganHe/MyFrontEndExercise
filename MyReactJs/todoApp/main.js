@@ -9,6 +9,7 @@ var TodoApp = React.createClass({
             id: this.state.todos.length + 1,
             content: this.refs.todo.getDOMNode().value
         });
+        ////只有显示调用setState方法才以实现数据更新
         this.setState({
             todos: this.state.todos
         });
