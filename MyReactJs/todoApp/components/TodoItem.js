@@ -16,13 +16,13 @@ var TodoItem = React.createClass({
             return (
                 <li>
                     {this.props.item.content}&
-                    <button onclick={this.handleEdit}></button>
+                    <button onClick={this.handleEdit}>Edit</button>
                 </li>
             );
         } else {
             return (
                 <li>
-                    <input type="text" value={this.state.content} onchange={this.handleChange}/>
+                    <input type="text" value={this.state.content} onChange={this.handleChange}/>
                 </li>
             );
         }

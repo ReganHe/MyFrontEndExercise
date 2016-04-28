@@ -4,6 +4,15 @@ var React = require('react');
 var TodoList = require('./components/TodoList');
 
 var TodoApp = React.createClass({
+    addTodo: function (event) {
+        this.state.todos.push({
+            id: this.state.todos.length + 1,
+            content: this.refs.todo.getDOMNode().value
+        });
+        this.setState({
+            todos: this.state.todos
+        });
+    },
     getInitialState: function () {
         return {
             todos: []
@@ -23,7 +32,7 @@ var TodoApp = React.createClass({
         return (
             <div>
                 <input type="text" ref="todo"/>
-                <button onclick={this.addTodo}>add</button>
+                <button onClick={this.addTodo}>add</button>
                 <h2>Todos:</h2>
                 <TodoList items={this.state.todos}/>
             </div>
