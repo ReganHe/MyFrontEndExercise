@@ -8,8 +8,15 @@ var assign = require('object-assign');
 var _todos = [];
 
 //从data actions中加载todos数据的方法
-function loadTodos(todos) {
+function loadTodos(data) {
     _todos = data.todos;
+}
+
+function addTodo(data) {
+    _todos.push({
+        id: data.todo.id,
+        content: data.todo.content
+    });
 }
 
 //使用Node的Event Emitter来合并我们的store数据
@@ -33,10 +40,13 @@ var TodoStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
     var action = payload.action;
     //定义不同action的执行逻辑
-    switch (action) {
+    switch (action.actionType) {
         case 'LOAD_TODOS':
             //根据分发的action来调用方法
             loadTodos(action.data);
+            break;
+        case 'ADD_TODO':
+            addTodo(action.data);
             break;
         default:
             return true;

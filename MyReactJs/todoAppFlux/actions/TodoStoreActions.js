@@ -12,6 +12,14 @@ var TodoStoreActions = {
                 todos: todos
             }
         });
+    },
+    addTodo:function(todo){
+        AppDispatcher.handleViewAction({
+            actionType: 'ADD_TODO',
+            data: {
+                todo: todo
+            }
+        });
     }
 };
 module.exports = TodoStoreActions;

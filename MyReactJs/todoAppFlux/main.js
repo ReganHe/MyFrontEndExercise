@@ -23,6 +23,10 @@ var TodoApp = React.createClass({
         TodoStore.removeChangeListener(this._onChange);
     },
     addTodo: function () {
+        TodoStoreActions.addTodo({
+            id: this.state.todos.length + 1,
+            content: this.refs.todo.getDOMNode().value
+        });
     },
     render: function () {
         return (
