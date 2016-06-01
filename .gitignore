@@ -16,8 +16,14 @@ MyMVC/HelperMethods/HelperMethods/obj/
 MyBrowserify/node_modules/
 MyBrowserify/HelloWorld/node_modules/
 MyES6/PromiseDemo/node_modules/
+MyBrowserify/Transform/node_modules/
 MyExpress/myapp/node_modules/
 MyExpress/HelloWorld/node_modules/
 MyJasmine/First/node_modules/
 MyWebPack/second/node_modules/
 
+MyReactJs/todoApp/node_modules/
+MyReactJs/todoAppFlux/node_modules/
+*.user
+*.suo
+*.log
