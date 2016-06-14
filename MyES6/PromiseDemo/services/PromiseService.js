@@ -13,13 +13,20 @@ it.next();
 it.next();
 
 function timeout(ms) {
-    return new Promise((resolve) => {
+    return new Promise((resolve) = > {
             setTimeout(resolve, ms);
-});
+})
+    ;
 }
 
-timeout(100).then(() => {
+timeout(100)
+    .then(() = > {
     console.log('done');
-});
+})
+.
+then(() = > {
+    console.log('done again')
+})
+;
 
 

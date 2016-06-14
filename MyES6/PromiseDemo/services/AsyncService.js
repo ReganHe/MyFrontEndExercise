@@ -18,4 +18,5 @@ var sleep = async(
         console.log('Do some thing, ' + new Date());
         await(sleep(3000));
         console.log('Do other things, ' + new Date());
-    }))();
+    }
+))();
