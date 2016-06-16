@@ -28,3 +28,4 @@ MyReactJs/todoAppFlux/node_modules/
 *.suo
 *.log
 MyMVC/Components/ueditor/Components.Common/obj/
+MyJest/First/node_modules/
