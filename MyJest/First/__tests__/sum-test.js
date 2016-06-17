@@ -1,6 +1,7 @@
 /**
  * Created by heoo442 on 2016/6/16.
  */
+'use strict'
 jest.unmock('../sum');
 
 describe('sum', () => {
