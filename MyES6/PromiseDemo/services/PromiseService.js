@@ -14,9 +14,9 @@ it.next();
 
 function timeout(ms) {
     return new Promise((resolve) = > {
-            setTimeout(resolve, ms);
-})
-    ;
+            setTimeout(resolve, ms)
+        }
+)
 }
 
 timeout(100)
