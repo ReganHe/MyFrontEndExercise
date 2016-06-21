@@ -21,7 +21,7 @@
     ]
   },
   "scripts": {
-    "test": "jest -o"
+    "test": "jest -o --coverage --json"
   },
   "jest": {
     "unmockedModulePathPatterns": [
