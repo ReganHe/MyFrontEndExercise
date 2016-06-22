@@ -1,0 +1,11 @@
+{
+  "name": "First",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start":"node getting-started"
+  },
+  "dependencies": {
+    "mongoose": "~4.5.1"
+  }
+}
