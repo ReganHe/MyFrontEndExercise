@@ -6,8 +6,6 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-<%--    <script src="Scripts/angularjs/angular.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap-1.1.1.js"></script>--%>
     <script src="Scripts/lib/angular.min.js"></script>
     <script src="Scripts/lib/ui-bootstrap-1.1.1.min.js"></script>
     <script type="text/javascript">
@@ -68,10 +66,7 @@
                                     parentId = currentCate.parentId;
                                     $scope.c[i] = currentCate;
                                 }
-                            } else {
-                                //$scope.c[1] = $scope.categories[1][0];
-                            }
-
+                            } 
                         }).finally(function () {
                             deferred.resolve(1);
                         });;
@@ -81,9 +76,6 @@
             };
 
             var init = function (waiting) {
-                if (waiting) {
-                    
-                }
                 $scope.waiting = waiting || false;
                 getCategory();
             };
