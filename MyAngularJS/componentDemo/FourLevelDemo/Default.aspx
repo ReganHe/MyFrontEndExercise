@@ -14,99 +14,81 @@
         app.controller('CategoryController', ['$scope', '$q', '$http', function ($scope, $q, $http) {
             var getCategory = function () {
                 var deferred = $q.defer();
-                if (!$scope.waiting) {
-                    deferred.resolve(1);
-                } else {
-                    $http.get('Handler.ashx', null)
-                        .success(function (data) {
-                            $scope.tempCate = data;
-                            $scope.categories = new Array(5);
-                            $scope.c = new Array(5);
-                            $scope.categories[1] = $scope.tempCate.filter(function (value, index, array) {
-                                return value.depth == 1;
-                            });
+                $http.get('Handler.ashx', null)
+                    .success(function (data) {
+                        $scope.tempCate = data;
+                        $scope.categories = new Array(5);
+                        $scope.c = new Array(5);
+                        $scope.categories[1] = $scope.tempCate.filter(function (value, index, array) {
+                            return value.depth == 1;
+                        });
 
-                            $scope.$watch('c[1]', function (newVal, oldVal) {
-                                $scope.categories[2] = null;
-                                $scope.categories[3] = null;
-                                $scope.categories[4] = null;
-                                if (newVal) {
-                                    $("#hfCategory").val(newVal.cateId);
-                                    $scope.categories[2] = $scope.tempCate.filter(function (value, index, array) {
-                                        return value.depth == 2 && value.parentId == newVal.cateId;
-                                    });
+                        $scope.$watch('c[1]', function (newVal, oldVal) {
+                            $scope.categories[2] = null;
+                            $scope.categories[3] = null;
+                            $scope.categories[4] = null;
+                            if (newVal) {
+                                $("#hfCategory").val(newVal.cateId);
+                                $scope.categories[2] = $scope.tempCate.filter(function (value, index, array) {
+                                    return value.depth == 2 && value.parentId == newVal.cateId;
+                                });
 
-                                }
-                            });
-
-                            $scope.$watch('c[2]', function (newVal, oldVal) {
-                                if (newVal) {
-                                    $("#hfCategory").val(newVal.cateId);
-                                    $scope.categories[3] = $scope.tempCate.filter(function (value, index, array) {
-                                        return value.depth == 3 && value.parentId == newVal.cateId;
-                                    });
-                                    $scope.categories[4] = null;
-                                }
-                            });
-
-                            $scope.$watch('c[3]', function (newVal, oldVal) {
-                                if (newVal) {
-                                    $("#hfCategory").val(newVal.cateId);
-                                    $scope.categories[4] = $scope.tempCate.filter(function (value, index, array) {
-                                        return value.depth == 4 && value.parentId == newVal.cateId;
-                                    });
-                                }
-                            });
-
-                            $scope.$watch('c[4]', function (newVal, oldVal) {
-                                if (newVal) {
-                                    $("#hfCategory").val(newVal.cateId);
-                                }
-                            });
-
-                            if ($scope.categoryId) {
-                                var category = $scope.tempCate.filter(function (value, index, array) {
-                                    return value.cateId == $scope.categoryId;
-                                })[0];
-                                $scope.c[category.depth] = category;
-                                var parentId = category.parentId;
-                                for (var i = category.depth - 1; i > 0; i--) {
-                                    var currentCate = $scope.tempCate.filter(function (value, index, array) {
-                                        return value.cateId == parentId;
-                                    })[0];
-                                    parentId = currentCate.parentId;
-                                    $scope.c[i] = currentCate;
-                                }
                             }
-                        }).finally(function () {
-                            deferred.resolve(1);
-                        });;
-                }
+                        });
+
+                        $scope.$watch('c[2]', function (newVal, oldVal) {
+                            if (newVal) {
+                                $("#hfCategory").val(newVal.cateId);
+                                $scope.categories[3] = $scope.tempCate.filter(function (value, index, array) {
+                                    return value.depth == 3 && value.parentId == newVal.cateId;
+                                });
+                                $scope.categories[4] = null;
+                            }
+                        });
+
+                        $scope.$watch('c[3]', function (newVal, oldVal) {
+                            if (newVal) {
+                                $("#hfCategory").val(newVal.cateId);
+                                $scope.categories[4] = $scope.tempCate.filter(function (value, index, array) {
+                                    return value.depth == 4 && value.parentId == newVal.cateId;
+                                });
+                            }
+                        });
+
+                        $scope.$watch('c[4]', function (newVal, oldVal) {
+                            if (newVal) {
+                                $("#hfCategory").val(newVal.cateId);
+                            }
+                        });
+
+                        if ($scope.categoryId) {
+                            var category = $scope.tempCate.filter(function (value, index, array) {
+                                return value.cateId == $scope.categoryId;
+                            })[0];
+                            $scope.c[category.depth] = category;
+                            var parentId = category.parentId;
+                            for (var i = category.depth - 1; i > 0; i--) {
+                                var currentCate = $scope.tempCate.filter(function (value, index, array) {
+                                    return value.cateId == parentId;
+                                })[0];
+                                parentId = currentCate.parentId;
+                                $scope.c[i] = currentCate;
+                            }
+                        }
+                    }).finally(function () {
+                        deferred.resolve(1);
+                    });;
+                
 
                 return deferred.promise;
             };
 
-            var init = function (waiting) {
+            var init = function () {
                 $scope.categoryId = <%=LoadCategoryId%>;
-                $scope.waiting = waiting || false;
                 getCategory();
             };
 
-            init(1);
-
-            function getSelectedCategoryId() {
-                var result;
-                if ($scope.categories[4] && $scope.categories[4][0] && $('#category4').val()) {
-                    result = $scope.c[4];
-                }
-                else if ($scope.categories[3] && $scope.categories[3][0] && $('#category3').val()) {
-                    result = $scope.c[3];
-                }
-                else if ($scope.categories[2] && $scope.categories[2][0] && $('#category2').val()) {
-                    result = $scope.c[2];
-                }
-                return (result && result.isLeaf) ? result.cateId : null;
-            }
+            init();
 
         }]);
     </script>
