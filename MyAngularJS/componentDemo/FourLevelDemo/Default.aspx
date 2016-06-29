@@ -8,6 +8,7 @@
     <title></title>
     <script src="Scripts/lib/angular.min.js"></script>
     <script src="Scripts/lib/ui-bootstrap-1.1.1.min.js"></script>
+    <script src="Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
         var app = angular.module('categoryApp', ['ui.bootstrap']);
         app.controller('CategoryController', ['$scope', '$q', '$http', function ($scope, $q, $http) {
@@ -57,8 +58,7 @@
 
                             $scope.$watch('c[4]', function (newVal, oldVal) {
                                 if (newVal) {
-                                    //$('#hfCategory').val = newVal;
-                                    $scope.currentCategory = newVal.cateId;
+                                    $("#hfCategory").val(newVal.cateId);
                                 }
                             });
 
@@ -125,7 +125,7 @@
             <select class="form-control" id="category4" name="category4" ng-model="c[4]" ng-show="categories[4] && categories[4][0]" ng-options="category as category.cateName for category in categories[4]">
                 <option value="">请选择类目</option>
             </select>
-            <asp:HiddenField runat="server" ID="hfCategory" Value={{currentCategory}} />
+            <asp:HiddenField runat="server" ID="hfCategory"/>
         </div>
          <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" style="height: 21px" />
     </form>
