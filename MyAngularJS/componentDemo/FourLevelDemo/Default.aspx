@@ -7,19 +7,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="Scripts/jquery/jquery-2.1.4.js"></script>
-    <script src="Scripts/bootstrap/bootstrap.js"></script>   
-     <script src="Scripts/angularjs/angular.js"></script>
-    <script src="Scripts/angular-deferred-bootstrap/deferred-bootstrap.js"></script>
+    <script src="Scripts/angularjs/angular.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-1.1.1.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap-tpls-1.1.1.min.js"></script>
-    
-    <script src="Scripts/angularjs/angular-animate.min.js"></script>
+    <%--<script src="Scripts/jquery.json-2.2.min.js"></script>--%>
+    <%--<script src="Scripts/bootstrap/bootstrap.js"></script>--%>   
+    <%--<script src="Scripts/angular-deferred-bootstrap/deferred-bootstrap.js"></script>--%>
+    <%--<script src="Scripts/angular-ui/ui-bootstrap-tpls-1.1.1.min.js"></script>--%>
+<%--    <script src="Scripts/angularjs/angular-animate.min.js"></script>
     <script src="Scripts/angularjs/angular-sanitize.js"></script>
     <script src="Scripts/angularjs/angular-scenario.js"></script>
-    <script src="Scripts/angular-dialog-service/dialogs.js"></script>
-    
-      <script src="Scripts/jquery.json-2.2.min.js"></script>
-    <script src="Scripts/jquery.wsajax.js"></script>
+    <script src="Scripts/angular-dialog-service/dialogs.js"></script>--%>
+    <%--<script src="Scripts/jquery.wsajax.js"></script>--%>
     <script type="text/javascript">
         var app = angular.module('categoryApp', ['ui.bootstrap']);
         app.controller('CategoryController', ['$scope', '$q', '$http', function ($scope, $q, $http) {
