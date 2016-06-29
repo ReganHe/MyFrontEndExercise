@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditProduct.aspx.cs" Inherits="EditProduct" %>
 
 <!DOCTYPE html>
 
@@ -76,6 +76,7 @@
             };
 
             var init = function (waiting) {
+                $scope.categoryId = 1010203;
                 $scope.waiting = waiting || false;
                 getCategory();
             };
