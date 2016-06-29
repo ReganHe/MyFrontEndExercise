@@ -76,7 +76,7 @@
             };
 
             var init = function (waiting) {
-                $scope.categoryId = 1010203;
+                $scope.categoryId = <%=CategoryId%>;
                 $scope.waiting = waiting || false;
                 getCategory();
             };
@@ -90,7 +90,7 @@
     <form id="form1" runat="server">
         <div class="form-group course-category">
             <label for="courseName" class="form-item-title">所属类目</label>
-            <select class="form-control" id="category1" ng-model="c[1]" ng-show="categories[1]" ng-options="category as category.cateName for category in categories[1]">
+            <select class="form-control" id="category1"  name="category1"  ng-model="c[1]" ng-show="categories[1]" ng-options="category as category.cateName for category in categories[1]">
                 <option value="">请选择类目</option>
             </select>
             <select class="form-control" id="category2" ng-model="c[2]" ng-show="categories[2] && categories[2][0]" ng-options="category as category.cateName for category in categories[2]">
@@ -103,6 +103,8 @@
                 <option value="">请选择类目</option>
             </select>
         </div>
+
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
 
     </form>
 </body>

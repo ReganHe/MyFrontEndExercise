@@ -30,9 +30,11 @@
                                 $scope.categories[3] = null;
                                 $scope.categories[4] = null;
                                 if (newVal) {
+                                    //$("#hfCategory").val(newVal);
                                     $scope.categories[2] = $scope.tempCate.filter(function (value, index, array) {
                                         return value.depth == 2 && value.parentId == newVal.cateId;
                                     });
+
                                 }
                             });
 
@@ -53,6 +55,13 @@
                                 }
                             });
 
+                            $scope.$watch('c[4]', function (newVal, oldVal) {
+                                if (newVal) {
+                                    //$('#hfCategory').val = newVal;
+                                    $scope.currentCategory = newVal.cateId;
+                                }
+                            });
+
                             if ($scope.categoryId) {
                                 var category = $scope.tempCate.filter(function (value, index, array) {
                                     return value.cateId == $scope.categoryId;
@@ -66,7 +75,7 @@
                                     parentId = currentCate.parentId;
                                     $scope.c[i] = currentCate;
                                 }
-                            } 
+                            }
                         }).finally(function () {
                             deferred.resolve(1);
                         });;
@@ -76,11 +85,26 @@
             };
 
             var init = function (waiting) {
+                $scope.categoryId = <%=LoadCategoryId%>;
                 $scope.waiting = waiting || false;
                 getCategory();
             };
 
             init(1);
+
+            function getSelectedCategoryId() {
+                var result;
+                if ($scope.categories[4] && $scope.categories[4][0] && $('#category4').val()) {
+                    result = $scope.c[4];
+                }
+                else if ($scope.categories[3] && $scope.categories[3][0] && $('#category3').val()) {
+                    result = $scope.c[3];
+                }
+                else if ($scope.categories[2] && $scope.categories[2][0] && $('#category2').val()) {
+                    result = $scope.c[2];
+                }
+                return (result && result.isLeaf) ? result.cateId : null;
+            }
 
         }]);
     </script>
@@ -89,20 +113,21 @@
     <form id="form1" runat="server">
         <div class="form-group course-category">
             <label for="courseName" class="form-item-title">所属类目</label>
-            <select class="form-control" id="category1" ng-model="c[1]" ng-show="categories[1]" ng-options="category as category.cateName for category in categories[1]">
+            <select class="form-control" id="category1" name="category1" ng-model="c[1]" ng-show="categories[1]" ng-options="category as category.cateName for category in categories[1]">
                 <option value="">请选择类目</option>
             </select>
-            <select class="form-control" id="category2" ng-model="c[2]" ng-show="categories[2] && categories[2][0]" ng-options="category as category.cateName for category in categories[2]">
+            <select class="form-control" id="category2" name="category2" ng-model="c[2]" ng-show="categories[2] && categories[2][0]" ng-options="category as category.cateName for category in categories[2]">
                 <option value="">请选择类目</option>
             </select>
-            <select class="form-control" id="category3" ng-model="c[3]" ng-show="categories[3] && categories[3][0]" ng-options="category as category.cateName for category in categories[3]">
+            <select class="form-control" id="category3" name="category3" ng-model="c[3]" ng-show="categories[3] && categories[3][0]" ng-options="category as category.cateName for category in categories[3]">
                 <option value="">请选择类目</option>
             </select>
-            <select class="form-control" id="category4" ng-model="c[4]" ng-show="categories[4] && categories[4][0]" ng-options="category as category.cateName for category in categories[4]">
+            <select class="form-control" id="category4" name="category4" ng-model="c[4]" ng-show="categories[4] && categories[4][0]" ng-options="category as category.cateName for category in categories[4]">
                 <option value="">请选择类目</option>
             </select>
+            <asp:HiddenField runat="server" ID="hfCategory" Value={{currentCategory}} />
         </div>
-
+         <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" style="height: 21px" />
     </form>
 </body>
 </html>
