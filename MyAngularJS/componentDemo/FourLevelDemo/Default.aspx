@@ -31,7 +31,7 @@
                                 $scope.categories[3] = null;
                                 $scope.categories[4] = null;
                                 if (newVal) {
-                                    //$("#hfCategory").val(newVal);
+                                    $("#hfCategory").val(newVal.cateId);
                                     $scope.categories[2] = $scope.tempCate.filter(function (value, index, array) {
                                         return value.depth == 2 && value.parentId == newVal.cateId;
                                     });
@@ -41,6 +41,7 @@
 
                             $scope.$watch('c[2]', function (newVal, oldVal) {
                                 if (newVal) {
+                                    $("#hfCategory").val(newVal.cateId);
                                     $scope.categories[3] = $scope.tempCate.filter(function (value, index, array) {
                                         return value.depth == 3 && value.parentId == newVal.cateId;
                                     });
@@ -50,6 +51,7 @@
 
                             $scope.$watch('c[3]', function (newVal, oldVal) {
                                 if (newVal) {
+                                    $("#hfCategory").val(newVal.cateId);
                                     $scope.categories[4] = $scope.tempCate.filter(function (value, index, array) {
                                         return value.depth == 4 && value.parentId == newVal.cateId;
                                     });
@@ -125,9 +127,9 @@
             <select class="form-control" id="category4" name="category4" ng-model="c[4]" ng-show="categories[4] && categories[4][0]" ng-options="category as category.cateName for category in categories[4]">
                 <option value="">请选择类目</option>
             </select>
-            <asp:HiddenField runat="server" ID="hfCategory"/>
+            <asp:HiddenField runat="server" ID="hfCategory" />
         </div>
-         <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" style="height: 21px" />
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" Style="height: 21px" />
     </form>
 </body>
 </html>
