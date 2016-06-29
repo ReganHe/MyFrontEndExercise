@@ -1,6 +1,5 @@
 ﻿<%@ WebHandler Language="C#" Class="Handler" %>
 
-using System;
 using System.Web;
 using FourLevelDemo.Services;
 using Newtonsoft.Json;
