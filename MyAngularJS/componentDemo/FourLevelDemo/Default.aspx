@@ -11,76 +11,70 @@
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
         var app = angular.module('categoryApp', ['ui.bootstrap']);
-        app.controller('CategoryController', ['$scope', '$q', '$http', function ($scope, $q, $http) {
+        app.controller('CategoryController', ['$scope', '$http', function ($scope,$http) {
             var getCategory = function () {
-                var deferred = $q.defer();
                 $http.get('Handler.ashx', null)
-                    .success(function (data) {
+                    .success(function(data) {
                         $scope.tempCate = data;
                         $scope.categories = new Array(5);
                         $scope.c = new Array(5);
-                        $scope.categories[1] = $scope.tempCate.filter(function (value, index, array) {
+                        $scope.categories[1] = $scope.tempCate.filter(function(value, index, array) {
                             return value.depth == 1;
                         });
 
-                        $scope.$watch('c[1]', function (newVal, oldVal) {
+                        $scope.$watch('c[1]', function(newVal, oldVal) {
                             $scope.categories[2] = null;
                             $scope.categories[3] = null;
                             $scope.categories[4] = null;
                             if (newVal) {
                                 $("#hfCategory").val(newVal.cateId);
-                                $scope.categories[2] = $scope.tempCate.filter(function (value, index, array) {
+                                $scope.categories[2] = $scope.tempCate.filter(function(value, index, array) {
                                     return value.depth == 2 && value.parentId == newVal.cateId;
                                 });
 
                             }
                         });
 
-                        $scope.$watch('c[2]', function (newVal, oldVal) {
+                        $scope.$watch('c[2]', function(newVal, oldVal) {
                             if (newVal) {
                                 $("#hfCategory").val(newVal.cateId);
-                                $scope.categories[3] = $scope.tempCate.filter(function (value, index, array) {
+                                $scope.categories[3] = $scope.tempCate.filter(function(value, index, array) {
                                     return value.depth == 3 && value.parentId == newVal.cateId;
                                 });
                                 $scope.categories[4] = null;
                             }
                         });
 
-                        $scope.$watch('c[3]', function (newVal, oldVal) {
+                        $scope.$watch('c[3]', function(newVal, oldVal) {
                             if (newVal) {
                                 $("#hfCategory").val(newVal.cateId);
-                                $scope.categories[4] = $scope.tempCate.filter(function (value, index, array) {
+                                $scope.categories[4] = $scope.tempCate.filter(function(value, index, array) {
                                     return value.depth == 4 && value.parentId == newVal.cateId;
                                 });
                             }
                         });
 
-                        $scope.$watch('c[4]', function (newVal, oldVal) {
+                        $scope.$watch('c[4]', function(newVal, oldVal) {
                             if (newVal) {
                                 $("#hfCategory").val(newVal.cateId);
                             }
                         });
 
                         if ($scope.categoryId) {
-                            var category = $scope.tempCate.filter(function (value, index, array) {
+                            var category = $scope.tempCate.filter(function(value, index, array) {
                                 return value.cateId == $scope.categoryId;
                             })[0];
                             $scope.c[category.depth] = category;
                             var parentId = category.parentId;
                             for (var i = category.depth - 1; i > 0; i--) {
-                                var currentCate = $scope.tempCate.filter(function (value, index, array) {
+                                var currentCate = $scope.tempCate.filter(function(value, index, array) {
                                     return value.cateId == parentId;
                                 })[0];
                                 parentId = currentCate.parentId;
                                 $scope.c[i] = currentCate;
                             }
                         }
-                    }).finally(function () {
-                        deferred.resolve(1);
-                    });;
-                
-
-                return deferred.promise;
+                    });
             };
 
             var init = function () {
