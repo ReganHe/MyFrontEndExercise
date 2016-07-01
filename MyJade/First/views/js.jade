@@ -1,0 +1,15 @@
+//
+   Created by heke on 2016/7/1.
+- var maintainer= {name: 'Forbes Lindesay',twitter: '@ForbesLindesay',blog: 'forbeslindesay.co.uk'}
+h1(name=maintainer.name)
+    | Maintainer:
+    =' ' + maintainer.name
+table
+    tr
+        td(style='width: ' + (100 / 2) + '%').
+            Twitter
+        td= maintainer.twitter
+    tr
+        td(style='width: ' + (100 / 2) + '%').
+            Blog
+        td= maintainer.blog
